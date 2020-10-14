@@ -1,0 +1,11 @@
+{
+    "name": "Zitga.Packagetest.Tests",
+    "references": [
+        "Zitga.Packagetest"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
