@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public class ZBaseDependenciesManager : EditorWindow
@@ -145,12 +146,12 @@ public class ZBaseDependenciesManager : EditorWindow
                         GUI.enabled = true;
                         try
                         {
-                            var result = Client.Add("https://github.com/minhdt17/package-base-test.git?path=Packages/com.zitga.packagetest");
-                            if (result.Status == StatusCode.Failure)
+                            string url = "https://github.com/minhdt17/package-base-test.git?path=Packages/com.zitga.packagetest#0.2.0";
+                            ZBaseEditorCoroutines.StartEditorCoroutine(AddPackage(url, (result) =>
                             {
-                                if (!string.IsNullOrEmpty(result.Error.message))
-                                    Debug.LogError("[Error] Add Fail: " + result.Error.message);
-                            }
+                                if (result.Status == StatusCode.Success)
+                                    Debug.Log("Success!");
+                            }));
                         }
                         catch (System.Exception)
                         {
@@ -186,6 +187,28 @@ public class ZBaseDependenciesManager : EditorWindow
         }
     }
     #endregion
+
+    private IEnumerator AddPackage(string url, System.Action<AddRequest> callback)
+    {
+        var result = Client.Add(url);
+
+        while (!result.IsCompleted)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        if (result.Error != null)
+        {
+            Debug.LogError("[Error] Add Fail: " + result.Error.message);
+            if (callback != null)
+                callback(null);
+        }
+        else
+        {
+            if (callback != null)
+                callback(result);
+        }
+    }
 
     public class providerInfo
     {
