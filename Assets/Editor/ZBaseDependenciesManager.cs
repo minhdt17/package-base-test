@@ -143,7 +143,20 @@ public class ZBaseDependenciesManager : EditorWindow
                     if (btn)
                     {
                         GUI.enabled = true;
-                        Client.Add("https://github.com/Cysharp/UniTask.git?path=README.md");
+                        try
+                        {
+                            var result = Client.Add("https://github.com/minhdt17/package-base-test.git?path=Packages/com.zitga.packagetest");
+                            if (result.Status == StatusCode.Failure)
+                            {
+                                if (!string.IsNullOrEmpty(result.Error.message))
+                                    Debug.LogError("[Error] Add Fail: " + result.Error.message);
+                            }
+                        }
+                        catch (System.Exception)
+                        {
+
+                            throw;
+                        }
                     }
 
                 }
