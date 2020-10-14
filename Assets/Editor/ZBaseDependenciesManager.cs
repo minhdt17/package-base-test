@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class ZBaseDependenciesManager : EditorWindow
 {
@@ -53,7 +55,7 @@ public class ZBaseDependenciesManager : EditorWindow
         info.displayProviderName = "package test";
         info.currentStatues = providerInfo.Status.none;
         providersSet.Add(info);
-
+        ZBaseEditorCoroutines.StartEditorCoroutine(GetFile("https://github.com/minhdt17/package-base-test/raw/main/Packages/com.zitga.packagetest/package.json"));
         Repaint();
     }
 
@@ -147,10 +149,18 @@ public class ZBaseDependenciesManager : EditorWindow
                         try
                         {
                             string url = "https://github.com/minhdt17/package-base-test.git?path=Packages/com.zitga.packagetest#0.2.0";
-                            ZBaseEditorCoroutines.StartEditorCoroutine(AddPackage(url, (result) =>
+                            string name = "com.unity.2d.animation";
+                            //ZBaseEditorCoroutines.StartEditorCoroutine(AddPackage(name, (result) =>
+                            //{
+                            //    if (result.Status == StatusCode.Success)
+                            //        Debug.Log("Success!");
+                            //}));
+
+                            ZBaseEditorCoroutines.StartEditorCoroutine(SearchPackage(name, (result) =>
                             {
                                 if (result.Status == StatusCode.Success)
-                                    Debug.Log("Success!");
+                                    if (result.Result.Length > 0)
+                                        Debug.Log(string.Format("Package {0}, lastest version {1}", result.Result[0].name, result.Result[0].version));
                             }));
                         }
                         catch (System.Exception)
@@ -188,9 +198,10 @@ public class ZBaseDependenciesManager : EditorWindow
     }
     #endregion
 
-    private IEnumerator AddPackage(string url, System.Action<AddRequest> callback)
+    #region Action
+    private IEnumerator AddPackage(string urlOrPackageName, System.Action<AddRequest> callback)
     {
-        var result = Client.Add(url);
+        var result = Client.Add(urlOrPackageName);
 
         while (!result.IsCompleted)
         {
@@ -209,6 +220,53 @@ public class ZBaseDependenciesManager : EditorWindow
                 callback(result);
         }
     }
+
+    private IEnumerator SearchPackage(string PackageName, System.Action<SearchRequest> callback)
+    {
+        var result = Client.Search(PackageName);
+
+        while (!result.IsCompleted)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        if (result.Error != null)
+        {
+            Debug.LogError("[Error] Add Fail: " + result.Error.message);
+            if (callback != null)
+                callback(null);
+        }
+        else
+        {
+            if (callback != null)
+                callback(result);
+        }
+    }
+    #endregion
+
+    #region Http
+    private IEnumerator GetFile(string url)
+    {
+        UnityWebRequest unityWebRequest = UnityWebRequest.Get(url);
+        var webRequest = unityWebRequest.SendWebRequest();
+
+        while (!webRequest.isDone)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        if (unityWebRequest.isHttpError)
+        {
+            Debug.LogError("[Error] Load Fail: " + unityWebRequest.error);
+        }
+
+        if (!unityWebRequest.isHttpError && !unityWebRequest.isNetworkError)
+        {
+            string json = unityWebRequest.downloadHandler.text;
+            Debug.Log("Data: " + json);
+        }
+    }
+    #endregion
 
     public class providerInfo
     {

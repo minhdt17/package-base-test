@@ -684,6 +684,36 @@
     <Reference Include="UniTask.Linq">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UniTask.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Animation.Runtime">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Triangle.Runtime">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Editor">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Zitga.Packagetest.Editor.csproj">

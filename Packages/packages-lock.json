@@ -7,6 +7,32 @@
       "dependencies": {},
       "hash": "3bebaef9694b012df09747b322362e3228f8c09d"
     },
+    "com.unity.2d.animation": {
+      "version": "3.2.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.common": "2.0.2",
+        "com.unity.mathematics": "1.1.0",
+        "com.unity.2d.sprite": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.2d.common": {
+      "version": "2.0.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.sprite": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,
@@ -33,6 +59,13 @@
     "com.unity.ide.vscode": {
       "version": "1.2.1",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.mathematics": {
+      "version": "1.1.0",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -96,7 +129,9 @@
       "version": "file:com.zitga.packagetest",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {}
+      "dependencies": {
+        "com.cysharp.unitask": "2.0.36"
+      }
     },
     "nuget.mono-cecil": {
       "version": "0.1.6-preview",
