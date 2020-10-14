@@ -1,0 +1,10 @@
+{
+    "name": "Zitga.Packagetest.Editor",
+    "references": [
+      "Zitga.Packagetest"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
