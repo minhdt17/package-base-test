@@ -608,12 +608,7 @@
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Zitga.Packagetest.csproj">
-      <Project>{DF104DAB-1775-5F8C-47AD-30CB228C709D}</Project>
-      <Name>Zitga.Packagetest</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup></ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

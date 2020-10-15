@@ -62,8 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packages\com.zitga.packagetest\Runtime\RuntimeExample.cs" />
-    <None Include="Packages\com.zitga.packagetest\Runtime\Zitga.Packagetest.asmdef" />
+    <Compile Include="Packages\com.zitga.packagetest\Scripts\Runtime\ZBaseEnum.cs" />
+    <Compile Include="Packages\com.zitga.packagetest\Scripts\Runtime\ZBasePackageIdConfig.cs" />
+    <None Include="Packages\com.zitga.packagetest\Scripts\Runtime\Zitga.Packagetest.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
