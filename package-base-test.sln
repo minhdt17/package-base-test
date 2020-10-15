@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zitga.Packagetest", "Zitga.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zitga.Packagetest.Tests", "Zitga.Packagetest.Tests.csproj", "{DD141FF0-FF69-C0E6-19AC-AD2EA25460E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{9A457E78-3BDC-3235-302C-D8DB12FD626F}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{7A4280DB-7430-87A1-DFBD-ACCE4EAFCEF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zitga.Packagetest.Editor", "Zitga.Packagetest.Editor.csproj", "{65BC60C4-85B7-88A5-4457-D50A1DF18453}"
@@ -25,6 +27,10 @@ Global
 		{DD141FF0-FF69-C0E6-19AC-AD2EA25460E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD141FF0-FF69-C0E6-19AC-AD2EA25460E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD141FF0-FF69-C0E6-19AC-AD2EA25460E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A457E78-3BDC-3235-302C-D8DB12FD626F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A457E78-3BDC-3235-302C-D8DB12FD626F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A457E78-3BDC-3235-302C-D8DB12FD626F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A457E78-3BDC-3235-302C-D8DB12FD626F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A4280DB-7430-87A1-DFBD-ACCE4EAFCEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A4280DB-7430-87A1-DFBD-ACCE4EAFCEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A4280DB-7430-87A1-DFBD-ACCE4EAFCEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU

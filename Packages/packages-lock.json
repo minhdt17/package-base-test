@@ -129,10 +129,7 @@
       "version": "file:com.zitga.packagetest",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {
-        "com.cysharp.unitask": "2.0.36",
-        "com.unity.2d.animation": "3.2.5"
-      }
+      "dependencies": {}
     },
     "nuget.mono-cecil": {
       "version": "0.1.6-preview",

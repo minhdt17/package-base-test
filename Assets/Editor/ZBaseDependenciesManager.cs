@@ -6,9 +6,12 @@ using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
+using ZBaseJsonHelper;
 
 public class ZBaseDependenciesManager : EditorWindow
 {
+    private const string packVersionURL = "https://github.com/minhdt17/package-base-test/raw/main/Packages/com.zitga.packagetest/package.json";
+    private const string packCurrVersionDir = "Packages/packages-lock.json";
     private const int Width = 760;
     private const int Height = 600;
 
@@ -18,6 +21,7 @@ public class ZBaseDependenciesManager : EditorWindow
     private readonly GUILayoutOption buttonWidth = GUILayout.Width(100);
     private readonly SortedSet<providerInfo> providersSet = new SortedSet<providerInfo>(new ProviderInfoComparor());
     private providerInfo zBaseManagerProviderInfo;
+    private PackageVersionModel packageVersion;
 
     public static void ShowZBaseDependenciesManager()
     {
@@ -49,13 +53,13 @@ public class ZBaseDependenciesManager : EditorWindow
             fontStyle = FontStyle.Bold
         };
 
-        zBaseManagerProviderInfo = new providerInfo("Zitga Base Tool", "0.1.0", "0.1.0", providerInfo.Status.updated);
+        //zBaseManagerProviderInfo = new providerInfo("Zitga Base Tool", "0.1.0", "0.1.0", providerInfo.Status.updated);
 
-        providerInfo info = new providerInfo();
-        info.displayProviderName = "package test";
-        info.currentStatues = providerInfo.Status.none;
-        providersSet.Add(info);
-        ZBaseEditorCoroutines.StartEditorCoroutine(GetFile("https://github.com/minhdt17/package-base-test/raw/main/Packages/com.zitga.packagetest/package.json"));
+        //providerInfo info = new providerInfo();
+        //info.displayProviderName = "package test";
+        //info.currentStatues = providerInfo.Status.none;
+        //providersSet.Add(info);
+        ZBaseEditorCoroutines.StartEditorCoroutine(GetVersions());
         Repaint();
     }
 
@@ -185,11 +189,14 @@ public class ZBaseDependenciesManager : EditorWindow
                 }
                 else
                 {
-                    GUI.enabled = false;
-                    GUILayout.Button(new GUIContent
+                    var btn = GUILayout.Button(new GUIContent
                     {
-                        text = "Updated",
+                        text = "Remove",
                     }, buttonWidth);
+                    if (btn)
+                    {
+                        GUI.enabled = true;
+                    }
                 }
                 GUILayout.Space(5);
                 GUI.enabled = true;
@@ -245,9 +252,9 @@ public class ZBaseDependenciesManager : EditorWindow
     #endregion
 
     #region Http
-    private IEnumerator GetFile(string url)
+    private IEnumerator GetVersions()
     {
-        UnityWebRequest unityWebRequest = UnityWebRequest.Get(url);
+        UnityWebRequest unityWebRequest = UnityWebRequest.Get(packVersionURL);
         var webRequest = unityWebRequest.SendWebRequest();
 
         while (!webRequest.isDone)
@@ -264,6 +271,25 @@ public class ZBaseDependenciesManager : EditorWindow
         {
             string json = unityWebRequest.downloadHandler.text;
             Debug.Log("Data: " + json);
+            providersSet.Clear();
+            zBaseManagerProviderInfo = new providerInfo();
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            //            
+            try
+            {
+                dic = Json.Deserialize(json) as Dictionary<string, object>;
+                packageVersion = JsonUtility.FromJson<PackageVersionModel>(json);
+            }
+
+            catch (Exception e)
+            {
+                Debug.Log("Error getting response " + e.ToString());
+            }
+            //
+            if (packageVersion != null)
+            {
+                Debug.Log("Dependencies count: " + packageVersion.dependencies);
+            }
         }
     }
     #endregion
@@ -307,99 +333,6 @@ public class ZBaseDependenciesManager : EditorWindow
             none = 2,
             updated = 3
         }
-
-        public bool GetFromJson(string name, Dictionary<string, object> dic)
-        {
-            //providerName = name;
-            //object obj;
-
-            //dic.TryGetValue("keyname", out obj);
-            //if (obj != null)
-            //{
-            //    this.displayProviderName = obj as string;
-            //}
-            //else this.displayProviderName = providerName;
-
-            //dic.TryGetValue("isNewProvider", out obj);
-            //if (obj != null)
-            //{
-            //    this.isNewProvider = bool.Parse(obj as string);
-            //}
-
-            ////Get Unity versions
-            //if (dic.TryGetValue("Unity", out obj))
-            //{
-            //    Dictionary<string, object> remoteVersions = obj as Dictionary<string, object>;
-            //    if (remoteVersions != null)
-            //    {
-            //        if (remoteVersions.TryGetValue("DownloadUrl", out obj))
-            //        {
-            //            this.downloadURL = obj as string;
-            //        }
-            //        if (remoteVersions.TryGetValue("FileName", out obj))
-            //        {
-            //            this.fileName = obj as string;
-            //        }
-            //        if (remoteVersions.TryGetValue("UnityAdapterVersion", out obj))
-            //        {
-            //            this.latestUnityVersion = obj as string;
-            //        }
-            //    }
-            //}
-            //////Get Android version
-            //if (dic.TryGetValue(Android, out obj))
-            //{
-            //    Dictionary<string, object> androidVersion = obj as Dictionary<string, object>;
-            //    if (androidVersion != null)
-            //    {
-            //        androidVersion.TryGetValue("version", out obj);
-            //        androidVersion = obj as Dictionary<string, object>;
-            //        if (androidVersion != null)
-            //        {
-            //            if (androidVersion.TryGetValue(sdk, out obj))
-            //            {
-            //                this.sdkVersionDic.Add(Android, obj as string);
-            //            }
-            //        }
-            //    }
-            //}
-
-            ////Get iOS version
-            //dic.TryGetValue(iOS, out obj);
-            //Dictionary<string, object> iosVersion = obj as Dictionary<string, object>;
-            //if (iosVersion != null)
-            //{
-            //    iosVersion.TryGetValue("version", out obj);
-            //    iosVersion = obj as Dictionary<string, object>;
-            //    if (iosVersion != null)
-            //    {
-            //        if (iosVersion.TryGetValue(sdk, out obj))
-            //        {
-            //            this.sdkVersionDic.Add(iOS, obj as string);
-            //        }
-            //    }
-            //}
-
-            //if (GetVersionFromXML(fileName).Equals("none"))
-            //{
-            //    currentStatues = Status.none;
-            //}
-
-            //else
-            //{
-            //    currentUnityVersion = GetVersionFromXML(fileName);
-            //    if (isNewerVersion(currentUnityVersion, latestUnityVersion))
-            //    {
-            //        currentStatues = Status.installed;
-            //    }
-            //    else
-            //    {
-            //        currentStatues = Status.updated;
-            //    }
-            //}
-
-            return true;
-        }
     }
 
     internal class ProviderInfoComparor : IComparer<providerInfo>
@@ -407,6 +340,30 @@ public class ZBaseDependenciesManager : EditorWindow
         public int Compare(providerInfo x, providerInfo y)
         {
             return x.providerName.CompareTo(y.providerName);
+        }
+    }
+
+    public class PackageVersionModel
+    {
+        public string name;
+        public string displayName;
+        public string version;
+        public PackageDependencies[] dependencies;
+        public Dictionary<string, string> dictDependencies;
+
+        public PackageVersionModel()
+        {
+            this.name = "";
+            this.displayName = "";
+            this.version = "";
+            dictDependencies = new Dictionary<string, string>();
+        }
+
+        public class PackageDependencies
+        {
+            public string name;
+            public string version;
+            public PackageDependencies() { }
         }
     }
 }
