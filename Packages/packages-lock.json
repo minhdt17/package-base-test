@@ -130,7 +130,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.cysharp.unitask": "2.0.36"
+        "com.cysharp.unitask": "2.0.36",
+        "com.unity.2d.animation": "3.2.5"
       }
     },
     "nuget.mono-cecil": {
