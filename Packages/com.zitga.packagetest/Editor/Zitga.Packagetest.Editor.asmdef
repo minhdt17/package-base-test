@@ -1,10 +1,17 @@
 {
     "name": "Zitga.Packagetest.Editor",
     "references": [
-      "Zitga.Packagetest"
+        "GUID:2411bfce02bbdb0498af44e95885944b"
     ],
     "includePlatforms": [
         "Editor"
     ],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
