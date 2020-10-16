@@ -14,6 +14,7 @@ public class ZBaseDependenciesManager : EditorWindow
     private const string packVersionURL = "https://github.com/minhdt17/package-base-test/raw/main/Packages/com.zitga.packagetest/package.json";
     private const string packLockURL = "https://github.com/minhdt17/package-base-test/raw/main/Packages/packages-lock.json";
     private const string packLockLocalDir = "Packages/packages-lock.json";
+    private const string packCustomeLocalDir = "Packages/{0}/packages.json";
     private const int Width = 760;
     private const int Height = 600;
 

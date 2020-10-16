@@ -1,0 +1,11 @@
+{
+    "name": "Zitga.Packb.Tests",
+    "references": [
+        "Zitga.Packb"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
