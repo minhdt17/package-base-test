@@ -1,0 +1,14 @@
+{
+    "name": "Zitga.Packc.Editor.Tests",
+    "references": [
+        "Zitga.Packc.Editor",
+        "Zitga.Packc"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}

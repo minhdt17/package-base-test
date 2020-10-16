@@ -82,18 +82,35 @@
       }
     },
     "com.unity.upm.develop": {
-      "version": "0.1.2-preview",
+      "version": "file:com.unity.upm.develop",
       "depth": 0,
-      "source": "registry",
+      "source": "embedded",
       "dependencies": {
         "com.unity.test-framework": "1.1.9",
         "nuget.mono-cecil": "0.1.6-preview",
         "com.unity.package-validation-suite": "0.7.10-preview"
-      },
-      "url": "https://packages.unity.com"
+      }
+    },
+    "com.zitga.packa": {
+      "version": "file:com.zitga.packa",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.zitga.packagetest": {
       "version": "file:com.zitga.packagetest",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.zitga.packb": {
+      "version": "file:com.zitga.packb",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.zitga.packc": {
+      "version": "file:com.zitga.packc",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
