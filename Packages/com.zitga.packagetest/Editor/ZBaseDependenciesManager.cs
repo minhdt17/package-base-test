@@ -20,7 +20,7 @@ public class ZBaseDependenciesManager : EditorWindow
     private GUIStyle headerStyle;
     private GUIStyle textStyle;
     private GUIStyle boldTextStyle;
-    private readonly GUILayoutOption buttonWidth = GUILayout.Width(100);
+    private readonly GUILayoutOption buttonWidth = GUILayout.Width(60);
 
     private readonly Dictionary<string, providerInfo> providersSet = new Dictionary<string, providerInfo>();
     private readonly Dictionary<string, providerInfo> providersLocal = new Dictionary<string, providerInfo>();
@@ -48,12 +48,12 @@ public class ZBaseDependenciesManager : EditorWindow
             stretchWidth = true,
             fixedWidth = Width / 4 + 5,
             clipping = TextClipping.Overflow,
-            alignment = TextAnchor.MiddleLeft
+            alignment = TextAnchor.MiddleCenter
         };
         textStyle = new GUIStyle(EditorStyles.label)
         {
             fontStyle = FontStyle.Normal,
-            alignment = TextAnchor.MiddleLeft
+            alignment = TextAnchor.MiddleCenter
 
         };
         boldTextStyle = new GUIStyle(EditorStyles.label)
@@ -159,7 +159,7 @@ public class ZBaseDependenciesManager : EditorWindow
                 stretchWidth = true,
                 fixedWidth = Width / 4,
                 clipping = TextClipping.Overflow,
-                padding = new RectOffset(Width / 4 + 15, 0, 0, 0)
+                padding = new RectOffset(Width / 4 + 15, 0, 0, 0),
             });
             GUILayout.Space(85);
             EditorGUILayout.LabelField("Latest Tool Version", new GUIStyle(EditorStyles.label)
@@ -181,7 +181,7 @@ public class ZBaseDependenciesManager : EditorWindow
             EditorGUILayout.LabelField("Package", headerStyle);
             EditorGUILayout.LabelField("Current Package Version", headerStyle);
             EditorGUILayout.LabelField("Latest Package Version", headerStyle);
-            GUILayout.Space(30);
+            GUILayout.Space(40);
             EditorGUILayout.LabelField("Action", headerStyle);
         }
     }
@@ -201,67 +201,67 @@ public class ZBaseDependenciesManager : EditorWindow
                 EditorGUILayout.LabelField(providerData.currentUnityVersion, textStyle);
                 EditorGUILayout.LabelField(providerData.latestUnityVersion, textStyle);
 
-                if (providerData.currentStatues == ZBaseEnum.Status.none)
+                using (new EditorGUILayout.HorizontalScope(GUILayout.ExpandWidth(true)))
                 {
-                    bool btn = GUILayout.Button(new GUIContent
+                    if (providerData.currentStatues == ZBaseEnum.Status.none)
                     {
-                        text = "Install",
-                    }, buttonWidth);
-                    if (btn && !isProcessing)
-                    {
-                        GUI.enabled = true;
-                        try
+                        bool btn = GUILayout.Button(new GUIContent
                         {
-                            Debug.LogWarning(">>>>>>>>> Install Click! <<<<<<<<<<");
-                            string packageName = providerData.source == ZBaseEnum.Source.registry ? providerData.providerName : providerData.downloadURL;
-                            ZBaseEditorCoroutines.StartEditorCoroutine(AddPackage(packageName, providerData.latestUnityVersion, providerData.source, (result) =>
+                            text = "Install",
+                        }, buttonWidth);
+                        if (btn && !isProcessing)
+                        {
+                            GUI.enabled = true;
+                            try
                             {
-                                if (result.Status == StatusCode.Success)
+                                Debug.LogWarning(">>>>>>>>> Install Click! <<<<<<<<<<");
+                                string packageName = providerData.source == ZBaseEnum.Source.registry ? providerData.providerName : providerData.downloadURL;
+                                ZBaseEditorCoroutines.StartEditorCoroutine(AddPackage(packageName, providerData.latestUnityVersion, providerData.source, (result) =>
                                 {
-                                    Debug.Log(string.Format("***Install Success {0} {1}***", providerData.providerName, providerData.latestUnityVersion));
-                                    canRefresh = true;
-                                }
-                            }));
+                                    if (result.Status == StatusCode.Success)
+                                    {
+                                        Debug.Log(string.Format("***Install Success {0} {1}***", providerData.providerName, providerData.latestUnityVersion));
+                                        canRefresh = true;
+                                    }
+                                }));
+                            }
+                            catch (System.Exception e)
+                            {
+                                Debug.LogError("Error " + e.Message);
+                            }
                         }
-                        catch (System.Exception e)
-                        {
-                            Debug.LogError("Error " + e.Message);
-                        }
-                    }
 
-                }
-                else if (providerData.currentStatues == ZBaseEnum.Status.installed)
-                {
-                    var btn = GUILayout.Button(new GUIContent
-                    {
-                        text = "Update",
                     }
-                    , buttonWidth);
-                    if (btn && !isProcessing)
+                    else if (providerData.currentStatues == ZBaseEnum.Status.installed)
                     {
-                        GUI.enabled = true;
-                        try
+                        var btn = GUILayout.Button(new GUIContent
                         {
-                            Debug.LogWarning(">>>>>>>>> Update Click! <<<<<<<<<<");
-                            string packageName = providerData.source == ZBaseEnum.Source.registry ? providerData.providerName : providerData.downloadURL;
-                            ZBaseEditorCoroutines.StartEditorCoroutine(AddPackage(packageName, providerData.latestUnityVersion, providerData.source, (result) =>
+                            text = "Update",
+                        }
+                        , buttonWidth);
+                        if (btn && !isProcessing)
+                        {
+                            GUI.enabled = true;
+                            try
                             {
-                                if (result.Status == StatusCode.Success)
+                                Debug.LogWarning(">>>>>>>>> Update Click! <<<<<<<<<<");
+                                string packageName = providerData.source == ZBaseEnum.Source.registry ? providerData.providerName : providerData.downloadURL;
+                                ZBaseEditorCoroutines.StartEditorCoroutine(AddPackage(packageName, providerData.latestUnityVersion, providerData.source, (result) =>
                                 {
-                                    Debug.Log(string.Format("***Update Success {0} {1}***", providerData.providerName, providerData.latestUnityVersion));
-                                    canRefresh = true;
-                                }
-                            }));
-                        }
-                        catch (System.Exception e)
-                        {
-                            Debug.LogError("Error " + e.Message);
+                                    if (result.Status == StatusCode.Success)
+                                    {
+                                        Debug.Log(string.Format("***Update Success {0} {1}***", providerData.providerName, providerData.latestUnityVersion));
+                                        canRefresh = true;
+                                    }
+                                }));
+                            }
+                            catch (System.Exception e)
+                            {
+                                Debug.LogError("Error " + e.Message);
+                            }
                         }
                     }
-                }
-                else
-                {
-                    if (providerData.providerName == ZBasePackageIdConfig.namePackageManager)
+                    else
                     {
                         GUI.enabled = false;
                         GUILayout.Button(new GUIContent
@@ -269,13 +269,15 @@ public class ZBaseDependenciesManager : EditorWindow
                             text = "Updated",
                         }, buttonWidth);
                     }
-                    else
+
+                    if (providerData.currentStatues != ZBaseEnum.Status.none && providerData.providerName != ZBasePackageIdConfig.namePackageManager)
                     {
+                        GUI.enabled = true;
                         var btn = GUILayout.Button(new GUIContent
                         {
                             text = "Remove",
                         }
-                    , buttonWidth);
+                        , buttonWidth);
                         if (btn && !isProcessing)
                         {
                             GUI.enabled = true;
@@ -298,6 +300,7 @@ public class ZBaseDependenciesManager : EditorWindow
                         }
                     }
                 }
+                
                 GUILayout.Space(5);
                 GUI.enabled = true;
             }
