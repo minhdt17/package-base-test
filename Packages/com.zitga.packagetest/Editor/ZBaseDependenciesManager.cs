@@ -48,17 +48,18 @@ public class ZBaseDependenciesManager : EditorWindow
             stretchWidth = true,
             fixedWidth = Width / 4 + 5,
             clipping = TextClipping.Overflow,
-            alignment = TextAnchor.MiddleCenter
+            alignment = TextAnchor.MiddleLeft
         };
         textStyle = new GUIStyle(EditorStyles.label)
         {
             fontStyle = FontStyle.Normal,
-            alignment = TextAnchor.MiddleCenter
+            alignment = TextAnchor.MiddleLeft
 
         };
         boldTextStyle = new GUIStyle(EditorStyles.label)
         {
-            fontStyle = FontStyle.Bold
+            fontStyle = FontStyle.Bold,
+            alignment = TextAnchor.MiddleCenter
         };
 
 
@@ -161,6 +162,7 @@ public class ZBaseDependenciesManager : EditorWindow
                 clipping = TextClipping.Overflow,
                 padding = new RectOffset(Width / 4 + 15, 0, 0, 0),
             });
+
             GUILayout.Space(85);
             EditorGUILayout.LabelField("Latest Tool Version", new GUIStyle(EditorStyles.label)
             {
@@ -300,7 +302,7 @@ public class ZBaseDependenciesManager : EditorWindow
                         }
                     }
                 }
-                
+
                 GUILayout.Space(5);
                 GUI.enabled = true;
             }
