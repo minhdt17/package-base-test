@@ -577,6 +577,9 @@ public class ZBaseDependenciesManager : EditorWindow
 
                             if (!isCheck)
                             {
+                                if (!providersSet.ContainsKey(item.Key))
+                                    continue;
+
                                 providerInfo info = providersSet[item.Key].ShallowCopy();
                                 info.currentStatues = ZBaseEnum.Status.none;
                                 info.currentUnityVersion = "none";
