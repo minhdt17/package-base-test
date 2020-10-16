@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ZBaseEditorCoroutines : MonoBehaviour
+public class ZBaseEditorCoroutines
 {
     readonly IEnumerator mRoutine;
 
@@ -14,7 +14,7 @@ public class ZBaseEditorCoroutines : MonoBehaviour
         return coroutine;
     }
 
-    ZBaseEditorCoroutines(IEnumerator routine)
+    public ZBaseEditorCoroutines(IEnumerator routine)
     {
         mRoutine = routine;
     }
