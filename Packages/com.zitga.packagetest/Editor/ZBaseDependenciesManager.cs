@@ -12,7 +12,7 @@ using ZBaseJsonHelper;
 public class ZBaseDependenciesManager : EditorWindow
 {
     private const int LOAD_DATA_COMPLETE = 3;
-    private const string installURL = "https://github.com/minhdt17/{0}.git?path=Packages/{1}#{2}";
+    private const string installURL = "https://github.com/minhdt17/{0}.git?path=Packages/{1}";
     private const string latestTagURL = "https://api.github.com/repos/minhdt17/{0}/releases/latest";
     private const string packLockURL = "https://github.com/minhdt17/{0}/raw/main/Packages/packages-lock.json";
     private const string packVersionURL = "https://github.com/minhdt17/{0}/raw/main/Packages/{1}/package.json";
@@ -315,7 +315,7 @@ public class ZBaseDependenciesManager : EditorWindow
     private IEnumerator AddPackage(string packageName, System.Action<AddRequest> callback)
     {
         AddRequest result = null;
-        string urlDownload = string.Format(installURL, ZBasePackageIdConfig.REPO, packageName, latest_tag);
+        string urlDownload = string.Format(installURL, ZBasePackageIdConfig.REPO, packageName);
         result = Client.Add(urlDownload);
 
         while (!result.IsCompleted)
