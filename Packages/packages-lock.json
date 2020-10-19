@@ -95,7 +95,9 @@
       "version": "file:com.zitga.packa",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {}
+      "dependencies": {
+        "com.zitga.packb": "0.2.0"
+      }
     },
     "com.zitga.packagetest": {
       "version": "file:com.zitga.packagetest",
