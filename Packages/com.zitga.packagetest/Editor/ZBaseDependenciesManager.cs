@@ -331,10 +331,14 @@ public class ZBaseDependenciesManager : EditorWindow
     {
         AddRequest result = null;
         string urlDownload = "";
-        if (providerInfo.source == ZBaseEnum.Source.git)
+        ProviderInfo providerSever = providersSet[providerInfo.providerName];
+
+        if (providerSever.source == ZBaseEnum.Source.git)
             urlDownload = providerInfo.downloadURL + string.Format(suffixesVersionGitURL, providerInfo.latestUnityVersion);
-        else
+        else if (providerSever.source == ZBaseEnum.Source.embedded)
             urlDownload = string.Format(installURL, ZBasePackageIdConfig.REPO, providerInfo.providerName);
+        else if (providerSever.source == ZBaseEnum.Source.registry)
+            urlDownload = providerInfo.providerName;
 
         result = Client.Add(urlDownload);
 
