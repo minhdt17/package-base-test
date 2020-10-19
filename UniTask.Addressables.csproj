@@ -11,10 +11,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{478FCF10-AFE1-A45D-1059-D41A3087BD56}</ProjectGuid>
+    <ProjectGuid>{5FBAEDEF-8662-8DA7-5A16-D39781E8FF2C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Zitga.Packc.Tests</AssemblyName>
+    <AssemblyName>UniTask.Addressables</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -62,8 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packages\com.zitga.packc\Tests\Runtime\RuntimeExampleTest.cs" />
-    <None Include="Packages\com.zitga.packc\Tests\Runtime\Zitga.Packc.Tests.asmdef" />
+    <Compile Include="Library\PackageCache\com.cysharp.unitask@3bebaef969\Runtime\External\Addressables\AddressablesAsyncExtensions.cs" />
+    <None Include="Library\PackageCache\com.cysharp.unitask@3bebaef969\Runtime\External\Addressables\UniTask.Addressables.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -247,8 +247,26 @@
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/PackageCache/com.unity.package-validation-suite@0.7.10-preview/Lib/Editor/log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.APIComparison.Framework">
+      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/PackageCache/com.unity.package-validation-suite@0.7.10-preview/Lib/Editor/Unity.APIComparison.Framework.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -595,17 +613,11 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Zitga.Packc.csproj">
-      <Project>{112FCBBE-477F-0212-8D0C-AE67E27AA66C}</Project>
-      <Name>Zitga.Packc</Name>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{F48751B7-3CEC-FC2A-091F-8B62D854D9E6}</Project>
+      <Name>UniTask</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{75AAB473-1E1F-DF3F-070C-6A217DA1D70B}</Project>
