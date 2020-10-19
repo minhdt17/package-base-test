@@ -601,17 +601,19 @@
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Zitga.Packa.csproj">
       <Project>{CD8C1B8D-33B9-185A-E050-E6BF6EA2405A}</Project>
       <Name>Zitga.Packa</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{75AAB473-1E1F-DF3F-070C-6A217DA1D70B}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{79FA4FF8-0C0D-44CF-8EF2-B163F75DA478}</Project>
+      <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
