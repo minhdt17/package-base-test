@@ -115,6 +115,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.zitga.packd": {
+      "version": "file:com.zitga.packd",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "nuget.mono-cecil": {
       "version": "0.1.6-preview",
       "depth": 1,

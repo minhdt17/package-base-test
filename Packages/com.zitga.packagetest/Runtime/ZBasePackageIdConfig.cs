@@ -11,6 +11,7 @@ public class ZBasePackageIdConfig
         { "com.cysharp.unitask", "Unitask" },
         { "com.zitga.packa", "Package A" },
         { "com.zitga.packb", "Package B" },
-        { "com.zitga.packc", "Package C" },        
+        { "com.zitga.packc", "Package C" },
+        { "com.zitga.packd", "Package D" },
     };
 }
