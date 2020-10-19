@@ -11,6 +11,8 @@ using ZBaseJsonHelper;
 
 public class ZBaseDependenciesManager : EditorWindow
 {
+    private const int Width = 760;
+    private const int Height = 600;
     private const int LOAD_DATA_COMPLETE = 3;
     private const string installURL = "https://github.com/minhdt17/{0}.git?path=Packages/{1}";
     private const string suffixesVersionGitURL = "#{0}";
@@ -20,8 +22,6 @@ public class ZBaseDependenciesManager : EditorWindow
     private const string packLockLocalDir = "Packages/packages-lock.json";
     private const string packVersionLocalDir = "Packages/{0}/package.json";
     private const string packCacheLocalDir = "Library/PackageCache/{0}@{1}/package.json";
-    private const int Width = 760;
-    private const int Height = 600;
 
     private GUIStyle headerStyle;
     private GUIStyle textStyle;
@@ -30,7 +30,6 @@ public class ZBaseDependenciesManager : EditorWindow
 
     private readonly Dictionary<string, ProviderInfo> providersSet = new Dictionary<string, ProviderInfo>();
     private readonly Dictionary<string, ProviderInfo> providersLocal = new Dictionary<string, ProviderInfo>();
-    //private providerInfo zBaseManagerProviderLocal;
     private ZBaseEditorCoroutines mEditorCoroutines;
     private int progressLoadData = 0;
     private bool isProcessing;
@@ -763,26 +762,7 @@ public class ZBaseDependenciesManager : EditorWindow
 
     #region Utility
     private void CompareVersion()
-    {
-        // Tool manager
-        //if (zBaseManagerProviderLocal.source == ZBaseEnum.Source.embedded)
-        //{
-        //    zBaseManagerProviderLocal.currentStatues = ZBaseEnum.Status.updated;
-        //}
-        //else
-        //{
-        //    if (isNewerVersion(zBaseManagerProviderLocal.currentUnityVersion, providersSet[ZBasePackageIdConfig.namePackageManager].latestUnityVersion))
-        //    {
-        //        zBaseManagerProviderLocal.currentStatues = ZBaseEnum.Status.installed;
-        //        zBaseManagerProviderLocal.latestUnityVersion = providersSet[ZBasePackageIdConfig.namePackageManager].latestUnityVersion;
-        //    }
-        //    else
-        //    {
-        //        zBaseManagerProviderLocal.currentStatues = ZBaseEnum.Status.updated;
-        //    }
-        //}
-
-        // Package
+    {        
         foreach (var item in providersLocal)
         {
             var providerServer = providersSet[item.Key];
