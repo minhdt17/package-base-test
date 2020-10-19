@@ -1,0 +1,10 @@
+{
+    "name": "Zitga.Packd.Editor",
+    "references": [
+      "Zitga.Packd"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
