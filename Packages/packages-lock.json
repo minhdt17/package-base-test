@@ -96,7 +96,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.zitga.packb": "0.2.0"
+        "com.zitga.packb": "0.2.0",
+        "com.zitga.packc": "0.1.0"
       }
     },
     "com.zitga.packagetest": {
