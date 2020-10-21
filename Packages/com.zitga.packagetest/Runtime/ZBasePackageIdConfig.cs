@@ -13,5 +13,6 @@ public class ZBasePackageIdConfig
         { "com.zitga.packb", "Package B" },
         { "com.zitga.packc", "Package C" },
         { "com.zitga.packd", "Package D" },
+        { "DOTween_Pro_1.0.244.unitypackage","DOTween Pro" },
     };
 }

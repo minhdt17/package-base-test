@@ -14,7 +14,7 @@ public class ZBaseEnum
     public enum Source
     {
         registry,
-        builtin,
+        package,
         git,
         embedded
     }
