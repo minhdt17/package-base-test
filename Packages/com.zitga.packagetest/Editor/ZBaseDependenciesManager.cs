@@ -19,7 +19,7 @@ public class ZBaseDependenciesManager : EditorWindow
     private const string latestTagURL = "https://api.github.com/repos/minhdt17/{0}/releases/latest";
     private const string packLockURL = "https://github.com/minhdt17/{0}/raw/main/Packages/packages-lock.json";
     private const string packVersionURL = "https://github.com/minhdt17/{0}/raw/main/Packages/{1}/package.json";
-    private const string packDownloadURL = "https://github.com/minhdt17/{0}.git?path=Packages/PackageManagerDownload/{1}";
+    private const string packDownloadURL = "https://github.com/minhdt17/{0}/raw/main/Packages/PackageManagerDownload/{1}";
     private const string packLockLocalDir = "Packages/packages-lock.json";
     private const string packVersionLocalDir = "Packages/{0}/package.json";
     private const string packCacheLocalDir = "Library/PackageCache/{0}@{1}/package.json";
@@ -283,7 +283,11 @@ public class ZBaseDependenciesManager : EditorWindow
                                 GUI.enabled = true;
                                 try
                                 {
-                                    ZBaseEditorCoroutines.StartEditorCoroutine(DownloadFile(providerData.downloadURL, providerData.providerName));
+                                    ZBaseEditorCoroutines.StartEditorCoroutine(DownloadFile(providerData.downloadURL, providerData.providerName, () =>
+                                    {
+                                        AssetDatabase.Refresh();
+                                        canRefresh = true;
+                                    }));
                                 }
                                 catch (System.Exception e)
                                 {
@@ -361,7 +365,7 @@ public class ZBaseDependenciesManager : EditorWindow
                         }, buttonWidth);
                     }
 
-                    if (providerData.currentStatues != ZBaseEnum.Status.none && providerData.providerName != ZBasePackageIdConfig.namePackageManager)
+                    if (providerData.currentStatues != ZBaseEnum.Status.none && providerData.providerName != ZBasePackageIdConfig.namePackageManager && providerData.providerName.StartsWith("com"))
                     {
                         GUI.enabled = true;
                         var btn = GUILayout.Button(new GUIContent
@@ -694,7 +698,7 @@ public class ZBaseDependenciesManager : EditorWindow
         }
     }
 
-    private IEnumerator DownloadFile(string downloadFileUrl, string downloadFileName)
+    private IEnumerator DownloadFile(string downloadFileUrl, string downloadFileName, System.Action callback)
     {
         string fileDownloading = string.Format("Downloading {0}", downloadFileName);
         string path = string.Format(PackManagerDownloadDir, ZBasePackageIdConfig.namePackageManager, downloadFileName);
@@ -723,6 +727,10 @@ public class ZBaseDependenciesManager : EditorWindow
         //clean the downloadWebClient object regardless of whether the request succeeded or failed 
         downloadWebClient.Dispose();
         isProcessing = false;
+        if (callback != null)
+        {
+            callback.Invoke();
+        }
     }
 
     #endregion
