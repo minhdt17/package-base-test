@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>C:\Program Files\Unity\Hub\Editor\2019.4.8f1\Editor\Data\Tools\RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.bat</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -54,6 +52,9 @@
     <UnityVersion>2019.4.8f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.8f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -62,9 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\ZBaseDependenciesManager.cs" />
-    <Compile Include="Assets\Editor\ZBaseEditorCoroutines.cs" />
-    <Compile Include="Assets\Editor\ZitgaBaseManagerMenu.cs" />
+    <Compile Include="Assets\AltProg\CleanEmptyDir\Editor\Core.cs" />
+    <Compile Include="Assets\AltProg\CleanEmptyDir\Editor\MainWindow.cs" />
+    <Compile Include="Assets\AltProg\CleanEmptyDir\Editor\SimpleJSON.cs" />
+    <Compile Include="Assets\AltProg\CleanEmptyDir\Editor\UpdateChecker.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -248,9 +250,6 @@
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Zitga.Packagetest">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Zitga.Packagetest.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.VR">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
     </Reference>
@@ -264,7 +263,7 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/PackageCache/com.unity.package-validation-suite@0.7.10-preview/Lib/Editor/log4net.dll</HintPath>
@@ -638,89 +637,103 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Animation.Runtime">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.PackageValidationSuite.Editor">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.PackageValidationSuite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PackageManagerUI.Develop.Editor">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.PackageManagerUI.Develop.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Animation.Triangle.Runtime">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.Addressables">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UniTask.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="UniTask">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UniTask.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InternalAPIEngineBridge.001">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.DOTween">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UniTask.DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Common.Runtime">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Animation.Editor">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.TextMeshPro">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UniTask.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UniTask.Linq">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UniTask.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.PackageValidationSuite.Editor.Extension">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.PackageValidationSuite.Editor.Extension.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Common.Editor">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/ZITGA STUDIO/Documents/Projects/package-base-test/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{9A457E78-3BDC-3235-302C-D8DB12FD626F}</Project>
-      <Name>Assembly-CSharp</Name>
+    <ProjectReference Include="Zitga.Packc.csproj">
+      <Project>{112FCBBE-477F-0212-8D0C-AE67E27AA66C}</Project>
+      <Name>Zitga.Packc</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packagetest.Editor.csproj">
+      <Project>{65BC60C4-85B7-88A5-4457-D50A1DF18453}</Project>
+      <Name>Zitga.Packagetest.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packb.csproj">
+      <Project>{4D4FA09A-0A8B-D495-5DF4-BBE585F2C3AA}</Project>
+      <Name>Zitga.Packb</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PackageManagerUI.Develop.Editor.csproj">
+      <Project>{49BCDCFB-A585-6630-796A-6C119EC5EB13}</Project>
+      <Name>Unity.PackageManagerUI.Develop.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packc.Editor.csproj">
+      <Project>{B7DAD0B8-CFB8-2201-05AE-CED3D3C23D12}</Project>
+      <Name>Zitga.Packc.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{79FA4FF8-0C0D-44CF-8EF2-B163F75DA478}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Addressables.csproj">
+      <Project>{5FBAEDEF-8662-8DA7-5A16-D39781E8FF2C}</Project>
+      <Name>UniTask.Addressables</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{F48751B7-3CEC-FC2A-091F-8B62D854D9E6}</Project>
+      <Name>UniTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.DOTween.csproj">
+      <Project>{743ED29F-DD4B-8C57-2745-4A85930A81F1}</Project>
+      <Name>UniTask.DOTween</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packa.Editor.csproj">
+      <Project>{3863B2EA-2F3E-C813-2038-2047E1FFE22E}</Project>
+      <Name>Zitga.Packa.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packb.Editor.csproj">
+      <Project>{33CC5CDA-BDCD-9759-D01E-43DD55A12B89}</Project>
+      <Name>Zitga.Packb.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.TextMeshPro.csproj">
+      <Project>{D0991A36-1B25-9E23-4798-17DF0F1BC9E8}</Project>
+      <Name>UniTask.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Linq.csproj">
+      <Project>{9B19E852-4DC8-0536-714C-1C9159FEC57E}</Project>
+      <Name>UniTask.Linq</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packagetest.csproj">
+      <Project>{DF104DAB-1775-5F8C-47AD-30CB228C709D}</Project>
+      <Name>Zitga.Packagetest</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packa.csproj">
+      <Project>{CD8C1B8D-33B9-185A-E050-E6BF6EA2405A}</Project>
+      <Name>Zitga.Packa</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{75AAB473-1E1F-DF3F-070C-6A217DA1D70B}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packd.Editor.csproj">
+      <Project>{D58D4FCA-538B-A54F-CF85-966127A05D57}</Project>
+      <Name>Zitga.Packd.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zitga.Packd.csproj">
+      <Project>{C66590E3-24E1-387F-88C8-C46C08147926}</Project>
+      <Name>Zitga.Packd</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
