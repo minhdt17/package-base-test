@@ -19,11 +19,11 @@ public class ZBaseDependenciesManager : EditorWindow
     private const string latestTagURL = "https://api.github.com/repos/minhdt17/{0}/releases/latest";
     private const string packLockURL = "https://github.com/minhdt17/{0}/raw/main/Packages/packages-lock.json";
     private const string packVersionURL = "https://github.com/minhdt17/{0}/raw/main/Packages/{1}/package.json";
-    private const string packDownloadURL = "https://github.com/minhdt17/{0}.git?path=Packages/Resources/{1}";
+    private const string packDownloadURL = "https://github.com/minhdt17/{0}.git?path=Packages/PackageManagerDownload/{1}";
     private const string packLockLocalDir = "Packages/packages-lock.json";
     private const string packVersionLocalDir = "Packages/{0}/package.json";
     private const string packCacheLocalDir = "Library/PackageCache/{0}@{1}/package.json";
-    private const string PackManagerDownloadDir = "Packages/PackageManagerDownload/{0}";
+    private const string PackManagerDownloadDir = "Packages/{0}/Resources/{1}";
 
     private GUIStyle headerStyle;
     private GUIStyle textStyle;
@@ -591,7 +591,7 @@ public class ZBaseDependenciesManager : EditorWindow
 
     private void ImportPackage(string packageName)
     {
-        string urlPackageImport = string.Format(PackManagerDownloadDir, packageName);
+        string urlPackageImport = string.Format(PackManagerDownloadDir, ZBasePackageIdConfig.namePackageManager, packageName);
         if (CheckFileExist(urlPackageImport))
             AssetDatabase.ImportPackage(urlPackageImport, true);
         else
@@ -697,7 +697,7 @@ public class ZBaseDependenciesManager : EditorWindow
     private IEnumerator DownloadFile(string downloadFileUrl, string downloadFileName)
     {
         string fileDownloading = string.Format("Downloading {0}", downloadFileName);
-        string path = string.Format(PackManagerDownloadDir, downloadFileName);
+        string path = string.Format(PackManagerDownloadDir, ZBasePackageIdConfig.namePackageManager, downloadFileName);
         UnityWebRequest downloadWebClient = new UnityWebRequest(downloadFileUrl);
         downloadWebClient.downloadHandler = new DownloadHandlerFile(path);
         downloadWebClient.SendWebRequest();
@@ -866,7 +866,7 @@ public class ZBaseDependenciesManager : EditorWindow
                         {
                             if (!item.Key.StartsWith("com"))
                             {
-                                string pathPackage = string.Format(PackManagerDownloadDir, item.Key);
+                                string pathPackage = string.Format(PackManagerDownloadDir, ZBasePackageIdConfig.namePackageManager, item.Key);
                                 ProviderModel info = new ProviderModel(item.Key, item.Value, "", "", CheckFileExist(pathPackage) ? ZBaseEnum.Status.installed : ZBaseEnum.Status.none,
                                     ZBaseEnum.Source.package, string.Format(packDownloadURL, ZBasePackageIdConfig.REPO, item.Key));
                                 providersLocal.Add(info.providerName, info);
